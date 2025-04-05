@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>About Backrooms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 基础设置 - 深色背景，禁止滚动 */
+        body, html {
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #121212; /* 深色背景 */
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* 默认文字样式 - 简单白色荧光 */
+        body {
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+        }
+
+        /* 荧光效果类 */
+        .glow-cyan {
+            text-shadow: 0 0 5px #0ff, 
+                         0 0 10px #0ff,
+                         0 0 15px #0ff,
+                         0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .glow-magenta {
+            text-shadow: 0 0 5px #f0f,
+                         0 0 10px #f0f,
+                         0 0 15px #f0f,
+                         0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        .glow-strong {
+            text-shadow: 0 0 8px #0ff, 
+                         0 0 16px #0ff,
+                         0 0 24px #0ff,
+                         0 0 32px rgba(0, 255, 255, 0.7);
+        }
+
+        /* 封面容器 */
+        .cover-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(0, 50, 80, 0.3) 0%,
+                rgba(0, 0, 0, 0.9) 70%
+            );
+        }
+
+        /* 主标题 */
+        .cover-title {
+            font-size: 4.5em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-align: center;
+            animation: pulse 3s infinite alternate;
+        }
+
+        /* 副标题 */
+        .cover-subtitle {
+            font-size: 1.8em;
+            margin-top: 30px;
+            letter-spacing: 3px;
+            text-align: center;
+        }
+
+        /* 演讲者信息 */
+        .cover-author {
+            font-size: 1.5em;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        /* 时间 */
+        .cover-date {
+            font-size: 1.2em;
+            margin-top: 50px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* 动画效果 */
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
+            100% { text-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px rgba(0, 255, 255, 0.5); }
+        }
+
+        /* 装饰元素 */
+        .corner {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            opacity: 0.5;
+        }
+
+        .corner-tl {
+            top: 50px;
+            left: 50px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner-tr {
+            top: 50px;
+            right: 50px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .corner-bl {
+            bottom: 50px;
+            left: 50px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .corner-br {
+            bottom: 50px;
+            right: 50px;
+            border-left: none;
+            border-top: none;
+        }
+		.page-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(30, 30, 40, 0.7);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    z-index: 100;
+  }
+  .page-nav:hover {
+    background: rgba(70, 70, 90, 0.9);
+    transform: translateY(-50%) scale(1.1);
+  }
+  .prev {
+    left: 20px;
+  }
+  .next {
+    right: 20px;
+  }
+  .arrow {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #a0a0ff;
+    border-width: 0 2px 2px 0;
+    transition: all 0.3s ease;
+  }
+  .prev .arrow {
+    transform: rotate(135deg);
+    margin-left: 8px;
+  }
+  .next .arrow {
+    transform: rotate(-45deg);
+    margin-right: 8px;
+  }
+  .page-nav:hover .arrow {
+    border-color: #ffffff;
+    box-shadow: 0 0 8px rgba(160, 160, 255, 0.6);
+  }
+  /* 呼吸动画 */
+  @keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+  }
+  .page-nav {
+    animation: pulse 2.5s infinite;
+  }
+.main-content { display: block; }
+.yc { display: none; }
+
+.main-content:target { display: none; }
+.yc:target { display: block; }
+    </style>
+</head>
+<body>
+    <div class="cover-container">
+        <!-- 装饰角 -->
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+	</div>
+
+        <!-- 主要内容 -->
+		<div class="cover-container">
+		<!--<a href="#s2" class="page-nav prev">
+  		<div class="arrow"></div>
+		</a> -->
+		<a href="#2" class="page-nav next">
+  		<div class="arrow"></div>
+		</a>
+        <h1 class="cover-title glow-strong">ABOUT BACKROOMS</h1>
+        <p class="cover-subtitle glow-cyan">深入探索阈限空间现象</p>
+        <p class="cover-author glow-magenta">演讲者: 無名的CZY</p>
+        <p class="cover-date">2025</p>
+		</div>
+		<div id="s2" class="yc">
+			<p>你好</p>
+		</div>
+		
+</body>
+</html>
